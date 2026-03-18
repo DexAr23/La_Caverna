@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE libreria SYSTEM "libreria.dtd">
+<libreria>
+  <libro categoria="Fantasía">
+    <ISBN>9788417347291</ISBN>
+    <titulo>El imperio final</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>688</paginas>
+    <editorial>Nova</editorial>
+    <tapa tipo="blanda" />
+    <precio>21.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788424912789</ISBN>
+    <titulo>La República</titulo>
+    <autor>Platón</autor>
+    <paginas>450</paginas>
+    <editorial>Gredos</editorial>
+    <tapa tipo="dura" />
+    <precio>22.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788420633190</ISBN>
+    <titulo>Así habló Zaratustra</titulo>
+    <autor>Friedrich Nietzsche</autor>
+    <paginas>440</paginas>
+    <editorial>Alianza</editorial>
+    <tapa tipo="blanda" />
+    <precio>11.95</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788430606054</ISBN>
+    <titulo>Meditaciones</titulo>
+    <autor>Marco Aurelio</autor>
+    <paginas>224</paginas>
+    <editorial>Taurus</editorial>
+    <tapa tipo="dura" />
+    <precio>17.90</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788437601328</ISBN>
+    <titulo>Crítica de la razón pura</titulo>
+    <autor>Immanuel Kant</autor>
+    <paginas>696</paginas>
+    <editorial>Cátedra</editorial>
+    <tapa tipo="dura" />
+    <precio>24.50</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788497593793</ISBN>
+    <titulo>El Resplandor</titulo>
+    <autor>Stephen King</autor>
+    <paginas>688</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788466331005</ISBN>
+    <titulo>It</titulo>
+    <autor>Stephen King</autor>
+    <paginas>1504</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>19.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788416035533</ISBN>
+    <titulo>Drácula</titulo>
+    <autor>Bram Stoker</autor>
+    <paginas>576</paginas>
+    <editorial>Alma Classics</editorial>
+    <tapa tipo="dura" />
+    <precio>15.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788420651347</ISBN>
+    <titulo>Los mitos de Cthulhu</titulo>
+    <autor>H.P. Lovecraft</autor>
+    <paginas>512</paginas>
+    <editorial>Alianza</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.50</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788491052197</ISBN>
+    <titulo>Frankenstein</titulo>
+    <autor>Mary Shelley</autor>
+    <paginas>304</paginas>
+    <editorial>Penguin Clásicos</editorial>
+    <tapa tipo="blanda" />
+    <precio>9.95</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788466658003</ISBN>
+    <titulo>El camino de los reyes</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>1200</paginas>
+    <editorial>Nova</editorial>
+    <tapa tipo="dura" />
+    <precio>34.90</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788498383492</ISBN>
+    <titulo>El imperio final</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>688</paginas>
+    <editorial>Nova</editorial>
+    <tapa tipo="blanda" />
+    <precio>21.00</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788445073728</ISBN>
+    <titulo>El Señor de los Anillos</titulo>
+    <autor>J.R.R. Tolkien</autor>
+    <paginas>1272</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="dura" />
+    <precio>45.00</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788498387544</ISBN>
+    <titulo>Harry Potter y la piedra filosofal</titulo>
+    <autor>J.K. Rowling</autor>
+    <paginas>256</paginas>
+    <editorial>Salamandra</editorial>
+    <tapa tipo="dura" />
+    <precio>16.95</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788499083322</ISBN>
+    <titulo>Fundacion</titulo>
+    <autor>Isaac Asimov</autor>
+    <paginas>256</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>11.50</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788466332910</ISBN>
+    <titulo>1984</titulo>
+    <autor>George Orwell</autor>
+    <paginas>352</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.95</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788497592215</ISBN>
+    <titulo>Dune</titulo>
+    <autor>Frank Herbert</autor>
+    <paginas>704</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.95</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788445077412</ISBN>
+    <titulo>Cronicas Marcianas</titulo>
+    <autor>Ray Bradbury</autor>
+    <paginas>288</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>9.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788466332972</ISBN>
+    <titulo>Diez negritos</titulo>
+    <autor>Agatha Christie</autor>
+    <paginas>224</paginas>
+    <editorial>Booket</editorial>
+    <tapa tipo="blanda" />
+    <precio>9.95</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788426418142</ISBN>
+    <titulo>El nombre de la rosa</titulo>
+    <autor>Umberto Eco</autor>
+    <paginas>784</paginas>
+    <editorial>Lumen</editorial>
+    <tapa tipo="dura" />
+    <precio>22.90</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788491221784</ISBN>
+    <titulo>El sabueso de los Baskerville</titulo>
+    <autor>Arthur Conan Doyle</autor>
+    <paginas>256</paginas>
+    <editorial>Santillana</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788420651156</ISBN>
+    <titulo>El mito de Sísifo</titulo>
+    <autor>Albert Camus</autor>
+    <paginas>160</paginas>
+    <editorial>Alianza</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.50</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788420684352</ISBN>
+    <titulo>El mundo como voluntad y representación</titulo>
+    <autor>Arthur Schopenhauer</autor>
+    <paginas>800</paginas>
+    <editorial>Alianza</editorial>
+    <tapa tipo="dura" />
+    <precio>28.50</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788432240126</ISBN>
+    <titulo>Ética para Amador</titulo>
+    <autor>Fernando Savater</autor>
+    <paginas>192</paginas>
+    <editorial>Ariel</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.90</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9788415601425</ISBN>
+    <titulo>La sociedad del cansancio</titulo>
+    <autor>Byung-Chul Han</autor>
+    <paginas>120</paginas>
+    <editorial>Herder</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.00</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788497931038</ISBN>
+    <titulo>Carrie</titulo>
+    <autor>Stephen King</autor>
+    <paginas>256</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788445000670</ISBN>
+    <titulo>Soy leyenda</titulo>
+    <autor>Richard Matheson</autor>
+    <paginas>192</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.00</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788415139447</ISBN>
+    <titulo>El ritual</titulo>
+    <autor>Adam Nevill</autor>
+    <paginas>448</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9788499089300</ISBN>
+    <titulo>Hellraiser</titulo>
+    <autor>Clive Barker</autor>
+    <paginas>160</paginas>
+    <editorial>La Factoría de Ideas</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.50</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788466659734</ISBN>
+    <titulo>Palabras radiantes</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>1248</paginas>
+    <editorial>Nova</editorial>
+    <tapa tipo="dura" />
+    <precio>34.90</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788496208629</ISBN>
+    <titulo>El nombre del viento</titulo>
+    <autor>Patrick Rothfuss</autor>
+    <paginas>880</paginas>
+    <editorial>Plaza &amp; Janés</editorial>
+    <tapa tipo="dura" />
+    <precio>24.95</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788417347314</ISBN>
+    <titulo>Juramentada</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>1400</paginas>
+    <editorial>Nova</editorial>
+    <tapa tipo="dura" />
+    <precio>36.00</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9788401337208</ISBN>
+    <titulo>Juego de tronos</titulo>
+    <autor>George R.R. Martin</autor>
+    <paginas>800</paginas>
+    <editorial>Gigamesh</editorial>
+    <tapa tipo="dura" />
+    <precio>32.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788445075739</ISBN>
+    <titulo>Fahrenheit 451</titulo>
+    <autor>Ray Bradbury</autor>
+    <paginas>192</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788490704400</ISBN>
+    <titulo>El hombre en el castillo</titulo>
+    <autor>Philip K. Dick</autor>
+    <paginas>288</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>17.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788466333061</ISBN>
+    <titulo>Un mundo feliz</titulo>
+    <autor>Aldous Huxley</autor>
+    <paginas>256</paginas>
+    <editorial>Debolsillo</editorial>
+    <tapa tipo="blanda" />
+    <precio>9.95</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9788490703274</ISBN>
+    <titulo>¿Sueñan los androides con ovejas eléctricas?</titulo>
+    <autor>Philip K. Dick</autor>
+    <paginas>256</paginas>
+    <editorial>Minotauro</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788423351503</ISBN>
+    <titulo>La sombra del viento</titulo>
+    <autor>Carlos Ruiz Zafón</autor>
+    <paginas>576</paginas>
+    <editorial>Planeta</editorial>
+    <tapa tipo="dura" />
+    <precio>21.90</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788408215394</ISBN>
+    <titulo>El silencio de la ciudad blanca</titulo>
+    <autor>Eva García Sáenz de Urturi</autor>
+    <paginas>448</paginas>
+    <editorial>Planeta</editorial>
+    <tapa tipo="blanda" />
+    <precio>19.50</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9788433920140</ISBN>
+    <titulo>Asesinato en el Orient Express</titulo>
+    <autor>Agatha Christie</autor>
+    <paginas>240</paginas>
+    <editorial>Molino</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.00</precio>
+  </libro>
+</libreria>
+        

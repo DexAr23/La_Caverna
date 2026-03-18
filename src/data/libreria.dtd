@@ -1,0 +1,11 @@
+<!ELEMENT libreria (libro+)>
+<!ELEMENT libro (ISBN,titulo, autor,paginas, editorial, tapa, precio)>
+<!ATTLIST libro categoria CDATA #REQUIRED>
+<!ELEMENT ISBN (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT paginas (#PCDATA)>
+<!ELEMENT editorial (#PCDATA)>
+<!ELEMENT tapa EMPTY>
+<!ATTLIST tapa tipo (dura|blanda) #REQUIRED>
+<!ELEMENT precio (#PCDATA)>

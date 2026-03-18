@@ -1,17 +1,54 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+// Cambiamos el import a este formato para evitar líos de tipos
+import * as xsltProcessor from 'xslt-processor';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
+const xmlPath = path.join(process.cwd(), 'src/data/libreria.xml');
+const xslPath = path.join(process.cwd(), 'src/data/transform.xsl');
+
+let htmlResultado = '';
+
+try {
+    const xmlRaw = await fs.readFile(xmlPath, 'utf-8');
+    const xslRaw = await fs.readFile(xslPath, 'utf-8');
+
+    // Usamos la librería a través del objeto que hemos importado
+    const xslt = new xsltProcessor.Xslt();
+    const xmlParser = new xsltProcessor.XmlParser();
+
+    // @ts-ignore - Esto le dice a VS Code: "Tranquilo, yo sé lo que hago"
+    const xmlParsed = xmlParser.parseXmlString(xmlRaw);
+    // @ts-ignore
+    const xslParsed = xmlParser.parseXmlString(xslRaw);
+    
+    // @ts-ignore
+    htmlResultado = xslt.process(xmlParsed, xslParsed);
+    
+} catch (error) {
+    console.error("Error en La Caverna:", error);
+    htmlResultado = '<p>Error al procesar los libros...</p>';
+}
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="La Caverna - Inicio">
+    <div class="app-wrapper">
+        <aside class="sidebar-filtros">
+            <h2>Filtros</h2>
+            <nav>
+                <button class="filter-btn active" data-cat="all">Todos</button>
+                <button class="filter-btn" data-cat="filosofia">Filosofía</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="hero">
+                <h1>La Caverna</h1>
+                <p>Libros que iluminan las sombras.</p>
+            </header>
+
+            <section class="grid-biblioteca" set:html={htmlResultado} />
+        </main>
+    </div>
+</MainLayout>
