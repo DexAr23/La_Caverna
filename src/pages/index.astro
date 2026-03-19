@@ -14,41 +14,98 @@ try {
     const xmlRaw = await fs.readFile(xmlPath, 'utf-8');
     const xslRaw = await fs.readFile(xslPath, 'utf-8');
 
-    // Usamos la librería a través del objeto que hemos importado
     const xslt = new xsltProcessor.Xslt();
     const xmlParser = new xsltProcessor.XmlParser();
 
-    // @ts-ignore - Esto le dice a VS Code: "Tranquilo, yo sé lo que hago"
-    const xmlParsed = xmlParser.parseXmlString(xmlRaw);
-    // @ts-ignore
-    const xslParsed = xmlParser.parseXmlString(xslRaw);
+    const xmlParsed = xmlParser.xmlParse(xmlRaw);
+    const xslParsed = xmlParser.xmlParse(xslRaw);
     
+    // CAMBIO AQUÍ: Cambiamos .process por .xsltProcess
     // @ts-ignore
-    htmlResultado = xslt.process(xmlParsed, xslParsed);
+    const resultadoReal = await xslt.xsltProcess(xmlParsed, xslParsed);
     
+    if (resultadoReal && resultadoReal.length > 0) {
+        htmlResultado = resultadoReal;
+    } else {
+        htmlResultado = "<h1 style='color:orange;'>El XSLT devolvió un texto vacío. Revisa el match='//libro' en tu XSL.</h1>";
+    }
+
 } catch (error) {
-    console.error("Error en La Caverna:", error);
-    htmlResultado = '<p>Error al procesar los libros...</p>';
+    console.error("Error detallado:", error);
+    htmlResultado = `<p style="color:red;">Error: ${error.message}</p>`;
 }
 ---
 
 <MainLayout title="La Caverna - Inicio">
-    <div class="app-wrapper">
-        <aside class="sidebar-filtros">
-            <h2>Filtros</h2>
-            <nav>
-                <button class="filter-btn active" data-cat="all">Todos</button>
-                <button class="filter-btn" data-cat="filosofia">Filosofía</button>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <header class="hero">
-                <h1>La Caverna</h1>
-                <p>Libros que iluminan las sombras.</p>
-            </header>
-
-            <section class="grid-biblioteca" set:html={htmlResultado} />
-        </main>
-    </div>
+    <section class="coleccion-libros" set:html={htmlResultado} />
 </MainLayout>
+<style is:global>
+    /* El contenedor que envuelve todas las cards */
+    .coleccion-libros {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+        padding: 3rem 5vw;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: var(--crema-claro);
+        min-height: 100vh;
+        max-width: 80vw;
+    }
+
+    /* Cada tarjeta de libro */
+    .card {
+        background-color: var(--blanco);
+        border: 5px solid var(--marron-suave);
+        border-color: black;
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        width: 250px;
+        height: 400px;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(139, 94, 60, 0.15);
+        border-color: var(--marron-caverna);
+    }
+
+    /* Ajuste de la imagen */
+    .card img {
+        align-self: center;
+       
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+        background-color: #eee; /* Por si la API de portadas falla */
+        margin-bottom: 1rem;
+    }
+
+    /* El botón del carrito */
+    .add-to-cart {
+        margin-top: auto;
+        background-color: var(--marron-caverna);
+        color: var(--blanco);
+        border: none;
+        padding: 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+
+    .add-to-cart:hover {
+        background-color: var(--texto);
+    }
+</style>

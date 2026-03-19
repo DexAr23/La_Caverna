@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE libreria SYSTEM "libreria.dtd">
+<!-- <!DOCTYPE libreria SYSTEM "libreria.dtd">-->
 <libreria>
   <libro categoria="Fantasía">
     <ISBN>9788417347291</ISBN>
@@ -154,15 +154,6 @@
     <tapa tipo="blanda" />
     <precio>14.95</precio>
   </libro>
-  <libro categoria="Ciencia Ficcion">
-    <ISBN>9788445077412</ISBN>
-    <titulo>Cronicas Marcianas</titulo>
-    <autor>Ray Bradbury</autor>
-    <paginas>288</paginas>
-    <editorial>Minotauro</editorial>
-    <tapa tipo="blanda" />
-    <precio>9.00</precio>
-  </libro>
   <libro categoria="Misterio">
     <ISBN>9788466332972</ISBN>
     <titulo>Diez negritos</titulo>
@@ -276,7 +267,7 @@
     <titulo>El nombre del viento</titulo>
     <autor>Patrick Rothfuss</autor>
     <paginas>880</paginas>
-    <editorial>Plaza &amp; Janés</editorial>
+    <editorial>Plaza y Janés</editorial>
     <tapa tipo="dura" />
     <precio>24.95</precio>
   </libro>
