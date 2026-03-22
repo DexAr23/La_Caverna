@@ -23,12 +23,26 @@ const { title = "La Caverna | Librería" } = Astro.props;
 
 		<style is:global>
 			:root {
-				--blanco: #ffffff;
-				--crema-claro: #fdfaf5;
-				--crema-detalle: #f5f5dc;
+				--bg-main: #151515;
+				--bg-panel: #241913;
+				--bg-panel-soft: #34261e;
+				--text-main: #f5f5dc;
+				--text-muted: #b9b2a6;
+				--accent-color: #8b5e3c;
+				--border-color: rgba(139, 94, 60, 0.72);
+				--panel-stroke: rgba(245, 245, 220, 0.08);
+				--panel-shadow: 0 22px 45px rgba(0, 0, 0, 0.28);
+				--overlay-dark: rgba(20, 16, 12, 0.45);
+				--font-body: 'Inter', sans-serif;
+				--font-display: 'Lora', serif;
+
+				/* Compatibilidad con componentes existentes */
+				--blanco: var(--text-main);
+				--crema-claro: var(--bg-main);
+				--crema-detalle: var(--bg-panel);
 				--marron-suave: #d2b48c;
-				--marron-caverna: #8b5e3c;
-				--texto: #2c2c2c;
+				--marron-caverna: var(--accent-color);
+				--texto: #0f0f0f;
 			}
 
 			* {
@@ -38,15 +52,18 @@ const { title = "La Caverna | Librería" } = Astro.props;
 			}
 
 			body {
-				background-color: var(--crema-claro);
-				color: var(--texto);
-				font-family: 'Inter', sans-serif;
+				background:
+					radial-gradient(circle at top, rgba(139, 94, 60, 0.16), transparent 32%),
+					linear-gradient(180deg, #171311 0%, var(--bg-main) 45%, #120f0d 100%);
+				color: var(--text-main);
+				font-family: var(--font-body);
 				line-height: 1.6;
+				min-height: 100vh;
 			}
 
 			h1, h2, h3 {
-				font-family: 'Lora', serif;
-				color: var(--marron-caverna);
+				font-family: var(--font-display);
+				color: var(--text-main);
 			}
 
 			/* Estilos para el Toast Container */

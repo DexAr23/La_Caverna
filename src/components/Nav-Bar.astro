@@ -62,10 +62,10 @@ const isHome = pathname === '/' || pathname === '/index.html';
         justify-content: space-between;
         align-items: center;
         padding: 20px 40px;
-        border: 5px solid var(--marron-caverna);
+        border: 4px solid var(--accent-color);
         border-radius: 22px;
-        background-color: var(--crema-detalle);
-        color: var(--marron-caverna);
+        background: linear-gradient(180deg, var(--bg-panel-soft) 0%, var(--bg-panel) 100%);
+        color: var(--text-main);
         position: fixed;
         width: 90%;
         top: 30px;
@@ -73,6 +73,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
         left: 0;
         right: 0;
         z-index: 100;
+        box-shadow: var(--panel-shadow);
         
     }
 
@@ -87,30 +88,30 @@ const isHome = pathname === '/' || pathname === '/index.html';
     .left { justify-content: flex-start; }
 
     .logo {
-        font-family: 'Lora', serif;
+        font-family: var(--font-display);
         font-size: 1.8rem;
         font-weight: bold;
         text-decoration: none;
-        color: var(--marron-caverna);
-        transition-duration: 50ms;
+        color: var(--text-main);
+        transition: color 0.2s ease, transform 0.2s ease;
     }
     
 
     .btn-nav {
         background: none;
         border: none;
-        color: var(--marron-caverna);
+        color: var(--text-main);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
-        transition-duration: 50ms;
+        transition: color 0.2s ease, transform 0.2s ease;
         position: relative;
     }
     .btn-nav:hover, .logo:hover {
         color: var(--marron-suave);
-        transform: scale(1.3);
+        transform: scale(1.08);
     }
 
     .cart-count {
@@ -121,8 +122,8 @@ const isHome = pathname === '/' || pathname === '/index.html';
         height: 20px;
         padding: 0 0.35rem;
         border-radius: 999px;
-        background-color: var(--marron-caverna);
-        color: var(--blanco);
+        background-color: var(--accent-color);
+        color: var(--text-main);
         font-size: 0.72rem;
         font-weight: 700;
         display: grid;

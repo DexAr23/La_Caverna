@@ -1,0 +1,256 @@
+---
+export const prerender = false;
+
+import MainLayout from '../../layouts/MainLayout.astro';
+import Nav_Bar from '../../components/Nav-Bar.astro';
+import Cart from '../../components/Cart.astro';
+import { getBookByIsbn } from '../../lib/books';
+
+const isbn = Astro.params.isbn ?? '';
+const book = await getBookByIsbn(isbn);
+
+if (!book) {
+    Astro.response.status = 404;
+}
+
+const formatPrice = (value: number) =>
+    new Intl.NumberFormat('es-ES', {
+        style: 'currency',
+        currency: 'EUR',
+    }).format(value);
+
+const pageTitle = book ? `${book.title} | La Caverna` : 'Libro no encontrado | La Caverna';
+---
+
+<MainLayout title={pageTitle}>
+    <Nav_Bar />
+    <Cart />
+
+    <main class="book-page">
+        {
+            book ? (
+                <section class="book-hero">
+                    <div class="book-cover-panel">
+                        <img
+                            class="book-cover-large"
+                            src={book.coverUrl}
+                            alt={book.title}
+                            loading="eager"
+                            onerror="this.onerror=null;this.src='https://placehold.co/700x1000/241913/f5f5dc?text=Sin+Portada';"
+                        />
+                    </div>
+
+                    <article class="book-detail-card card">
+                        <p class="book-kicker">{book.category}</p>
+                        <h1>{book.title}</h1>
+                        <p class="author">{book.author}</p>
+
+                        <dl class="book-meta">
+                            <div>
+                                <dt>ISBN</dt>
+                                <dd>{book.isbn}</dd>
+                            </div>
+                            <div>
+                                <dt>Editorial</dt>
+                                <dd>{book.publisher}</dd>
+                            </div>
+                            <div>
+                                <dt>Páginas</dt>
+                                <dd>{book.pages}</dd>
+                            </div>
+                            <div>
+                                <dt>Encuadernación</dt>
+                                <dd>{book.coverType}</dd>
+                            </div>
+                            <div>
+                                <dt>Precio</dt>
+                                <dd class="book-price">{formatPrice(book.price)}</dd>
+                            </div>
+                        </dl>
+
+                        <button
+                            class="add-to-cart"
+                            data-id={book.isbn}
+                            data-precio={book.price.toFixed(2)}
+                            data-title={book.title}
+                            data-author={book.author}
+                            data-cover={book.coverUrl}
+                            type="button"
+                        >
+                            Comprar
+                        </button>
+                    </article>
+                </section>
+            ) : (
+                <section class="book-empty-state">
+                    <article class="book-empty-card">
+                        <p class="book-kicker">La Caverna</p>
+                        <h1>Libro no encontrado</h1>
+                        <p>
+                            No hemos encontrado un libro con el ISBN solicitado. Puedes volver
+                            al catálogo principal para seguir explorando.
+                        </p>
+                        <a href="/" class="back-home-link">Volver al catálogo</a>
+                    </article>
+                </section>
+            )
+        }
+    </main>
+</MainLayout>
+
+<style>
+    .book-page {
+        width: min(1180px, calc(100vw - 48px));
+        margin: 0 auto;
+        padding: 170px 0 48px;
+        min-height: 100vh;
+    }
+
+    .book-hero {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(320px, 1.05fr);
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .book-cover-panel,
+    .book-detail-card,
+    .book-empty-card {
+        background: linear-gradient(180deg, var(--bg-panel-soft) 0%, var(--bg-panel) 100%);
+        border: 1px solid var(--border-color);
+        border-radius: 22px;
+        box-shadow: var(--panel-shadow);
+    }
+
+    .book-cover-panel {
+        padding: 1.35rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 680px;
+    }
+
+    .book-cover-large {
+        width: 100%;
+        max-width: 440px;
+        height: auto;
+        max-height: 760px;
+        object-fit: cover;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .book-detail-card {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        min-height: 680px;
+    }
+
+    .book-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--marron-suave);
+    }
+
+    .book-detail-card h1,
+    .book-empty-card h1 {
+        font-size: clamp(2rem, 4vw, 3.1rem);
+        line-height: 1.05;
+        margin: 0;
+    }
+
+    .book-detail-card .author {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+    }
+
+    .book-meta {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 0.5rem;
+    }
+
+    .book-meta div {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid var(--panel-stroke);
+    }
+
+    .book-meta dt {
+        color: var(--text-muted);
+        font-weight: 500;
+    }
+
+    .book-meta dd {
+        color: var(--text-main);
+        text-align: right;
+    }
+
+    .book-price {
+        color: var(--marron-suave);
+        font-size: 1.12rem;
+        font-weight: 700;
+    }
+
+    .book-detail-card .add-to-cart {
+        margin-top: auto;
+        min-height: 54px;
+        font-size: 1rem;
+    }
+
+    .book-empty-state {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: calc(100vh - 220px);
+    }
+
+    .book-empty-card {
+        width: min(620px, 100%);
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .book-empty-card p {
+        color: var(--text-muted);
+        margin-top: 1rem;
+    }
+
+    .back-home-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.4rem;
+        padding: 0.9rem 1.2rem;
+        border-radius: 12px;
+        background: var(--accent-color);
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    @media (max-width: 900px) {
+        .book-page {
+            width: min(100vw - 32px, 1180px);
+            padding-top: 190px;
+        }
+
+        .book-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .book-cover-panel,
+        .book-detail-card {
+            min-height: auto;
+        }
+
+        .book-cover-large {
+            max-height: 520px;
+        }
+    }
+</style>

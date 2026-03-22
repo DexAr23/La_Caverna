@@ -132,7 +132,6 @@ const storageKey = 'la-caverna-cart';
             add(item) {
                 this.items = [item, ...this.items];
                 this.save();
-                this.open();
                 showToast(`"${item.title}" se ha añadido al carrito.`);
             },
             remove(id) {
@@ -160,9 +159,13 @@ const storageKey = 'la-caverna-cart';
                 return {
                     cartLineId: `${id}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
                     id,
-                    title: titleNode?.textContent?.trim() || image?.getAttribute('alt') || 'Libro',
-                    author: authorNode?.textContent?.trim() || 'Autor desconocido',
-                    cover: image?.getAttribute('src') || '',
+                    title:
+                        button.dataset.title ||
+                        titleNode?.textContent?.trim() ||
+                        image?.getAttribute('alt') ||
+                        'Libro',
+                    author: button.dataset.author || authorNode?.textContent?.trim() || 'Autor desconocido',
+                    cover: button.dataset.cover || image?.getAttribute('src') || '',
                     price,
                 };
             },
@@ -188,17 +191,30 @@ const storageKey = 'la-caverna-cart';
                                     <h3>${escapeHtml(item.title)}</h3>
                                     <p>${escapeHtml(item.author)}</p>
                                 </div>
-                                <div class="cart-item-meta">
-                                    <strong>${formatPrice(item.price)}</strong>
-                                    <button
-                                        class="cart-remove"
-                                        type="button"
-                                        data-cart-remove="${item.cartLineId}"
-                                        aria-label="Eliminar ${escapeHtml(item.title)} del carrito"
+                                <strong class="cart-item-price">${formatPrice(item.price)}</strong>
+                                <button
+                                    class="cart-remove"
+                                    type="button"
+                                    data-cart-remove="${item.cartLineId}"
+                                    aria-label="Eliminar ${escapeHtml(item.title)} del carrito"
+                                >
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                        focusable="false"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
                                     >
-                                        Eliminar
-                                    </button>
-                                </div>
+                                        <path d="M3 6h18" />
+                                        <path d="M8 6V4h8v2" />
+                                        <path d="M19 6l-1 14H6L5 6" />
+                                        <path d="M10 11v6" />
+                                        <path d="M14 11v6" />
+                                    </svg>
+                                </button>
                             </article>
                         `
                     )
@@ -300,7 +316,7 @@ const storageKey = 'la-caverna-cart';
     .cart-backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(20, 16, 12, 0.45);
+        background: var(--overlay-dark);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease;
@@ -315,17 +331,18 @@ const storageKey = 'la-caverna-cart';
     .cart-drawer {
         position: fixed;
         top: 150px;
-        right: 0;
-        width: min(380px, calc(100vw - 24px));
+        right: 20px;
+        width: min(380px, calc(100vw - 40px));
+        height: calc(100vh - 180px);
         max-height: calc(100vh - 180px);
         display: flex;
         flex-direction: column;
-        background: linear-gradient(180deg, #34261e 0%, #241913 100%);
-        color: var(--crema-claro);
-        border: 4px solid var(--marron-caverna);
-        border-radius: 16px 0 0 16px;
+        background: linear-gradient(180deg, var(--bg-panel-soft) 0%, var(--bg-panel) 100%);
+        color: var(--text-main);
+        border: 4px solid var(--accent-color);
+        border-radius: 16px;
         box-shadow: 0 22px 45px rgba(0, 0, 0, 0.28);
-        transform: translateX(100%);
+        transform: translateX(calc(100% + 20px));
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1100;
         overflow: hidden;
@@ -339,11 +356,11 @@ const storageKey = 'la-caverna-cart';
     .cart-footer {
         padding: 1.25rem;
         background-color: rgba(12, 9, 7, 0.35);
-        border-bottom: 1px solid rgba(245, 245, 220, 0.08);
+        border-bottom: 1px solid var(--panel-stroke);
     }
 
     .cart-footer {
-        border-top: 1px solid rgba(245, 245, 220, 0.08);
+        border-top: 1px solid var(--panel-stroke);
         border-bottom: 0;
         margin-top: auto;
     }
@@ -364,14 +381,14 @@ const storageKey = 'la-caverna-cart';
     }
 
     .cart-header h2 {
-        color: var(--crema-claro);
+        color: var(--text-main);
         font-size: 1.4rem;
     }
 
     .cart-close {
         border: 1px solid rgba(245, 245, 220, 0.18);
         background: rgba(255, 255, 255, 0.04);
-        color: var(--crema-claro);
+        color: var(--text-main);
         border-radius: 999px;
         width: 38px;
         height: 38px;
@@ -399,7 +416,7 @@ const storageKey = 'la-caverna-cart';
     }
 
     .cart-body::-webkit-scrollbar-thumb {
-        background: var(--marron-caverna);
+        background: var(--accent-color);
         border-radius: 999px;
     }
 
@@ -420,18 +437,19 @@ const storageKey = 'la-caverna-cart';
     .cart-item {
         display: flex;
         align-items: center;
-        gap: 0.85rem;
+        justify-content: space-between;
+        gap: 10px;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(245, 245, 220, 0.08);
-        border-radius: 14px;
-        padding: 0.75rem;
+        border-radius: 12px;
+        padding: 0.55rem 0.65rem;
     }
 
-    .cart-item-cover {
-        width: 64px;
-        height: 90px;
+    img .cart-item-cover{
+        width: 35px;
+        height: 52px;
         object-fit: cover;
-        border-radius: 10px;
+        border-radius: 6px;
         flex-shrink: 0;
         background: rgba(255, 255, 255, 0.08);
     }
@@ -439,41 +457,52 @@ const storageKey = 'la-caverna-cart';
     .cart-item-copy {
         min-width: 0;
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
     }
 
     .cart-item-copy h3 {
-        color: var(--crema-claro);
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
+        color: var(--text-main);
+        font-size: 0.9rem;
+        line-height: 1.15;
+        margin: 0;
     }
 
     .cart-item-copy p {
         color: rgba(253, 250, 245, 0.72);
-        font-size: 0.92rem;
+        font-size: 0.78rem;
+        line-height: 1.1;
     }
 
-    .cart-item-meta {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.45rem;
-        flex-shrink: 0;
-        text-align: right;
-    }
-
-    .cart-item-meta strong {
+    .cart-item-price {
         color: var(--marron-suave);
-        font-size: 0.98rem;
+        font-size: 0.82rem;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
     .cart-remove {
         border: none;
         background: none;
-        color: rgba(253, 250, 245, 0.8);
+        color: rgba(253, 250, 245, 0.48);
         cursor: pointer;
-        font-size: 0.84rem;
-        text-decoration: underline;
-        text-underline-offset: 0.18rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.2rem;
+        flex-shrink: 0;
+        transition: color 0.2s ease;
+    }
+
+    .cart-remove svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+    }
+
+    .cart-remove:hover {
+        color: red;
     }
 
     .cart-summary-row {
@@ -487,7 +516,7 @@ const storageKey = 'la-caverna-cart';
 
     .cart-summary-total {
         font-size: 1.08rem;
-        color: var(--crema-claro);
+        color: var(--text-main);
         margin-bottom: 1rem;
     }
 
@@ -496,8 +525,8 @@ const storageKey = 'la-caverna-cart';
         border: none;
         border-radius: 10px;
         padding: 0.95rem 1rem;
-        background: var(--marron-caverna);
-        color: white;
+        background: var(--accent-color);
+        color: var(--text-main);
         font-weight: 700;
         cursor: pointer;
         transition: background 0.2s ease, transform 0.2s ease;
@@ -518,10 +547,10 @@ const storageKey = 'la-caverna-cart';
     }
 
     :global(.cart-toast) {
-        background: #241913;
-        color: var(--crema-claro);
+        background: var(--bg-panel);
+        color: var(--text-main);
         border: 1px solid rgba(245, 245, 220, 0.14);
-        border-left: 4px solid var(--marron-caverna);
+        border-left: 4px solid var(--accent-color);
         padding: 0.85rem 1rem;
         border-radius: 12px;
         box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
@@ -539,16 +568,15 @@ const storageKey = 'la-caverna-cart';
     @media (max-width: 768px) {
         .cart-drawer {
             top: 180px;
-            width: calc(100vw - 12px);
-            max-height: calc(100vh - 210px);
+            right: 20px;
+            width: calc(100vw - 40px);
+            height: calc(100vh - 220px);
+            max-height: calc(100vh - 220px);
+            transform: translateX(calc(100% + 20px));
         }
 
         .cart-item {
-            align-items: flex-start;
-        }
-
-        .cart-item-meta {
-            min-width: 78px;
+            align-items: center;
         }
     }
 </style>

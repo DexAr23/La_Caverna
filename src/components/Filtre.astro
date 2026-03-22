@@ -121,12 +121,12 @@ const selectedCats = url.searchParams.getAll("cat");
 <style>
   /* --- CONTENEDOR PRINCIPAL (PANEL) --- */
   .panel-filtros {
-    background-color: var(--crema-detalle);
+    background: linear-gradient(180deg, var(--bg-panel-soft) 0%, var(--bg-panel) 100%);
     position: fixed;
     padding: 1.5rem;
-    border-radius: 12px;
-    border: 4px solid var(--marron-caverna);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    border: 4px solid var(--accent-color);
+    box-shadow: var(--panel-shadow);
     width: 100%;
     max-width: 300px;
     top: 150px;
@@ -162,13 +162,13 @@ const selectedCats = url.searchParams.getAll("cat");
     width: 8px;
   }
   .panel-filtros::-webkit-scrollbar-track {
-    background: var(--crema-detalle);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 10px;
   }
   .panel-filtros::-webkit-scrollbar-thumb {
-    background: var(--marron-caverna);
+    background: var(--accent-color);
     border-radius: 10px;
-    border: 2px solid var(--crema-detalle);
+    border: 2px solid rgba(12, 9, 7, 0.35);
   }
 
   /* --- FORMULARIO Y GRUPOS --- */
@@ -190,7 +190,7 @@ const selectedCats = url.searchParams.getAll("cat");
   legend,
   label {
     font-weight: 600;
-    color: var(--marron-caverna);
+    color: var(--text-main);
     font-size: 0.95rem;
   }
 
@@ -198,11 +198,18 @@ const selectedCats = url.searchParams.getAll("cat");
   input[type="search"],
   input[type="number"] {
     padding: 0.6rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-family: inherit;
     width: 100%;
     box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+  }
+
+  input[type="search"]::placeholder,
+  input[type="number"]::placeholder {
+    color: var(--text-muted);
   }
 
   .precio-inputs {
@@ -238,9 +245,9 @@ const selectedCats = url.searchParams.getAll("cat");
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid var(--marron-caverna);
+    border: 2px solid var(--accent-color);
     border-radius: 4px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.04);
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -258,7 +265,7 @@ const selectedCats = url.searchParams.getAll("cat");
   }
 
   .opciones-grid input[type="checkbox"]:checked {
-    background-color: var(--marron-caverna);
+    background-color: var(--accent-color);
   }
 
   .opciones-grid input[type="checkbox"]:checked::before {
@@ -280,9 +287,9 @@ const selectedCats = url.searchParams.getAll("cat");
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    border: 2px solid var(--marron-caverna);
+    border: 2px solid var(--accent-color);
     border-radius: 50%;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.04);
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -295,7 +302,7 @@ const selectedCats = url.searchParams.getAll("cat");
     border-radius: 50%;
     transform: scale(0);
     transition: 120ms transform;
-    background-color: var(--marron-caverna);
+    background-color: var(--accent-color);
   }
 
   .radio-label input[type="radio"]:checked::before {
@@ -311,8 +318,8 @@ const selectedCats = url.searchParams.getAll("cat");
   }
 
   .btn-primario {
-    background-color: var(--marron-caverna);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--text-main);
     border: none;
     padding: 0.8rem;
     border-radius: 6px;
@@ -322,25 +329,25 @@ const selectedCats = url.searchParams.getAll("cat");
   }
 
   .btn-primario:hover {
-    background-color: var(--texto);
+    background-color: #a36c42;
   }
 
   .btn-reset {
     text-align: center;
     text-decoration: none;
-    color: #666;
+    color: var(--text-muted);
     font-size: 0.9rem;
     padding: 0.4rem;
   }
 
   .btn-reset:hover {
-    color: var(--marron-caverna);
+    color: var(--text-main);
     text-decoration: underline;
   }
 
   hr {
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--panel-stroke);
     margin: 0;
   }
 </style>

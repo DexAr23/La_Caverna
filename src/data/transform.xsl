@@ -42,16 +42,18 @@
 
                     <article class="card" data-category="{@categoria}">
                         <figure>
-                            <img
-                                src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
-                                alt="{titulo}"
-                                loading="lazy"
-                                onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
-                            />
-                            <figcaption>
-                                <h3><xsl:value-of select="titulo" /></h3>
-                                <p class="author"><xsl:value-of select="autor" /></p>
-                            </figcaption>
+                            <a class="card-link" href="/libro/{ISBN}">
+                                <img
+                                    src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
+                                    alt="{titulo}"
+                                    loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
+                                />
+                                <figcaption>
+                                    <h3><xsl:value-of select="titulo" /></h3>
+                                    <p class="author"><xsl:value-of select="autor" /></p>
+                                </figcaption>
+                            </a>
                         </figure>
                         <button class="add-to-cart" data-id="{ISBN}" data-precio="{precio}">
                             <xsl:value-of select="precio" />€
@@ -65,16 +67,18 @@
 
                     <article class="card" data-category="{@categoria}">
                         <figure>
-                            <img
-                                src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
-                                alt="{titulo}"
-                                loading="lazy"
-                                onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
-                            />
-                            <figcaption>
-                                <h3><xsl:value-of select="titulo" /></h3>
-                                <p class="author"><xsl:value-of select="autor" /></p>
-                            </figcaption>
+                            <a class="card-link" href="/libro/{ISBN}">
+                                <img
+                                    src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
+                                    alt="{titulo}"
+                                    loading="lazy"
+                                    onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
+                                />
+                                <figcaption>
+                                    <h3><xsl:value-of select="titulo" /></h3>
+                                    <p class="author"><xsl:value-of select="autor" /></p>
+                                </figcaption>
+                            </a>
                         </figure>
                         <button class="add-to-cart" data-id="{ISBN}" data-precio="{precio}">
                             <xsl:value-of select="precio" />€
