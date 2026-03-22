@@ -1,0 +1,120 @@
+---
+// src/components/Nav-Bar.astro
+import CartIcon from './Cart.astro'; // Tu componente del SVG del carrito
+
+const { pathname } = Astro.url;
+// Comprobamos si estamos en la raíz o en index.html
+const isHome = pathname === '/' || pathname === '/index.html';
+---
+
+<nav class="navbar">
+    <div class="nav-section left">
+        {isHome && (
+            <button id="btn-filtros" class="btn-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="21" x2="4" y2="14"></line>
+                    <line x1="4" y1="10" x2="4" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12" y2="3"></line>
+                    <line x1="20" y1="21" x2="20" y2="16"></line>
+                    <line x1="20" y1="12" x2="20" y2="3"></line>
+                    <line x1="1" y1="14" x2="7" y2="14"></line>
+                    <line x1="9" y1="8" x2="15" y2="8"></line>
+                    <line x1="17" y1="16" x2="23" y2="16"></line>
+                </svg>
+                <span>Filtros</span>
+            </button>
+        )}
+    </div>
+
+    <div class="nav-section center">
+        <a href="/" class="logo">La Caverna</a>
+    </div>
+
+    <div class="nav-section right">
+        <button id="btn-cart" class="btn-nav">
+            <CartIcon />
+        </button>
+    </div>
+</nav>
+<script>
+  // ESTO SE EJECUTA EN EL NAVEGADOR
+  function setupFilters() {
+    const btn = document.querySelector('#btn-filtros');
+    const panel = document.querySelector('.panel-filtros');
+
+    // El "?" (optional chaining) evita que la página muera si el elemento no existe
+    btn?.addEventListener('click', () => {
+      panel?.classList.toggle('abierto');
+    });
+  }
+
+  // Ejecutar al cargar
+  setupFilters();
+  // Reiniciar si usas ViewTransitions de Astro
+  document.addEventListener('astro:after-swap', setupFilters);
+</script>
+
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        border: 5px solid var(--marron-caverna);
+        border-radius: 22px;
+        background-color: var(--crema-detalle);
+        color: var(--marron-caverna);
+        position: fixed;
+        width: 90%;
+        top: 30px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        
+    }
+
+    .nav-section {
+        flex: 1; /* Esto hace que las 3 secciones midan lo mismo */
+        display: flex;
+        align-items: center;
+    }
+
+    .center { justify-content: center; }
+    .right { justify-content: flex-end; }
+    .left { justify-content: flex-start; }
+
+    .logo {
+        font-family: 'Lora', serif;
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: var(--marron-caverna);
+        transition-duration: 50ms;
+    }
+    
+
+    .btn-nav {
+        background: none;
+        border: none;
+        color: var(--marron-caverna);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition-duration: 50ms;
+    }
+    .btn-nav:hover, .logo:hover {
+        color: var(--marron-suave);
+        transform: scale(1.3);
+    }
+    @media (max-width: 768px) {
+        .navbar{
+            padding: 20px 20px;
+        }
+        .logo{
+            zoom:0.8
+        }
+    }
+</style>

@@ -1,0 +1,346 @@
+---
+// Aseguramos que Astro no intente pre-renderizar esta página como estática
+export const prerender = false;
+
+const url = new URL(Astro.request.url);
+
+// 1. Buscador (mantenemos el texto)
+const searchParam = url.searchParams.get("search") || "";
+
+// 2. Precios (si no hay nada, dejamos vacío para el placeholder)
+const minParam = url.searchParams.get("min") || "";
+const maxParam = url.searchParams.get("max") || "";
+
+// 3. Orden (IMPORTANTE: dar un valor por defecto para que el radio no quede vacío)
+const sortParam = url.searchParams.get("sort") || "ascending";
+
+// 4. Categorías (Obtenemos el array)
+const selectedCats = url.searchParams.getAll("cat");
+
+---
+
+<aside class="panel-filtros">
+  <form action="/" method="GET" class="formulario-busqueda">
+    <section class="grupo-filtro">
+      <label for="search">¿Qué libro buscas?</label>
+      <input
+        type="search"
+        id="search"
+        name="search"
+        value={searchParam}
+        placeholder="Título o autor..."
+      />
+    </section>
+
+    <hr />
+
+    <fieldset class="grupo-filtro">
+      <legend>Categorías</legend>
+      <div class="opciones-grid">
+        {
+          [
+            "Terror",
+            "Fantasia",
+            "Filosofia",
+            "Ciencia Ficcion",
+            "Misterio",
+          ].map((cat) => (
+            <label>
+              <input
+                type="checkbox"
+                name="cat"
+                value={cat}
+                checked={selectedCats.includes(cat)}
+              />
+              {cat}
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+
+    <hr />
+
+    <fieldset class="grupo-filtro">
+      <legend>Precio (€)</legend>
+      <div class="precio-inputs">
+        <div class="campo">
+          <label for="min">Mín</label>
+          <input
+            type="number"
+            id="min"
+            name="min"
+            value={minParam}
+            placeholder="0"
+          />
+        </div>
+        <div class="campo">
+          <label for="max">Máx</label>
+          <input
+            type="number"
+            id="max"
+            name="max"
+            value={maxParam}
+            placeholder="999"
+          />
+        </div>
+      </div>
+    </fieldset>
+
+    <hr />
+
+    <fieldset class="grupo-filtro">
+      <legend>Ordenar por precio</legend>
+      <label class="radio-label">
+        <input
+          type="radio"
+          name="sort"
+          value="ascending"
+          checked={sortParam === "ascending"}
+        />
+        <span>Más baratos primero</span>
+      </label>
+      <label class="radio-label">
+        <input
+          type="radio"
+          name="sort"
+          value="descending"
+          checked={sortParam === "descending"}
+        />
+        <span>Más caros primero</span>
+      </label>
+    </fieldset>
+
+    <div class="acciones">
+      <button type="submit" class="btn-primario">Aplicar Filtros</button>
+      <a href="/" class="btn-reset">Limpiar</a>
+    </div>
+  </form>
+</aside>
+
+<style>
+  /* --- CONTENEDOR PRINCIPAL (PANEL) --- */
+  .panel-filtros {
+    background-color: var(--crema-detalle);
+    position: fixed;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 4px solid var(--marron-caverna);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 300px;
+    top: 150px;
+    left: 0;
+    z-index: 1000;
+
+    /* Estado inicial: Oculto a la izquierda */
+    transform: translateX(-110%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Control de Scroll Interno */
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Estado cuando se añade la clase .abierto vía JS */
+  .panel-filtros.abierto {
+    transform: translateX(20px);
+  }
+
+  /* Responsivo para móviles */
+  @media (max-width: 768px) {
+    .panel-filtros {
+      top: 180px;
+      max-height: calc(100vh - 220px);
+    }
+  }
+
+  /* --- PERSONALIZACIÓN DEL SCROLLBAR --- */
+  .panel-filtros::-webkit-scrollbar {
+    width: 8px;
+  }
+  .panel-filtros::-webkit-scrollbar-track {
+    background: var(--crema-detalle);
+    border-radius: 10px;
+  }
+  .panel-filtros::-webkit-scrollbar-thumb {
+    background: var(--marron-caverna);
+    border-radius: 10px;
+    border: 2px solid var(--crema-detalle);
+  }
+
+  /* --- FORMULARIO Y GRUPOS --- */
+  .formulario-busqueda {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .grupo-filtro {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  legend,
+  label {
+    font-weight: 600;
+    color: var(--marron-caverna);
+    font-size: 0.95rem;
+  }
+
+  /* --- INPUTS DE TEXTO Y NÚMERO --- */
+  input[type="search"],
+  input[type="number"] {
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .precio-inputs {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .campo {
+    flex: 1;
+    min-width: 0; /* Evita desbordamiento flex */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  /* --- CHECKBOXES PERSONALIZADOS --- */
+  .opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .opciones-grid label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .opciones-grid input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--marron-caverna);
+    border-radius: 4px;
+    background-color: white;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .opciones-grid input[type="checkbox"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: white;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+
+  .opciones-grid input[type="checkbox"]:checked {
+    background-color: var(--marron-caverna);
+  }
+
+  .opciones-grid input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  /* --- RADIO BUTTONS PERSONALIZADOS --- */
+  .radio-label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+  }
+
+  .radio-label input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--marron-caverna);
+    border-radius: 50%;
+    background-color: white;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+  }
+
+  .radio-label input[type="radio"]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform;
+    background-color: var(--marron-caverna);
+  }
+
+  .radio-label input[type="radio"]:checked::before {
+    transform: scale(1);
+  }
+
+  /* --- BOTONES Y ACCIONES --- */
+  .acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .btn-primario {
+    background-color: var(--marron-caverna);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-primario:hover {
+    background-color: var(--texto);
+  }
+
+  .btn-reset {
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  .btn-reset:hover {
+    color: var(--marron-caverna);
+    text-decoration: underline;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 0;
+  }
+</style>

@@ -1,6 +1,8 @@
 ---
+export const prerender = false;
 import MainLayout from '../layouts/MainLayout.astro';
-// Cambiamos el import a este formato para evitar líos de tipos
+import Nav_Bar from '../components/Nav-Bar.astro';
+import Filtre from '../components/Filtre.astro';
 import * as xsltProcessor from 'xslt-processor';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -11,6 +13,17 @@ const xslPath = path.join(process.cwd(), 'src/data/transform.xsl');
 let htmlResultado = '';
 
 try {
+    const url = new URL(Astro.request.url);
+    
+    // 1. CAPTURAR DATOS
+    const search = url.searchParams.get('search') || '';
+    const catsArray = url.searchParams.getAll('cat'); 
+    const catsString = catsArray.length > 0 ? `|${catsArray.join('|')}|` : '|Todos|';
+    const minP = url.searchParams.get('min') || '0';
+    const maxP = url.searchParams.get('max') || '999';
+    const order = url.searchParams.get('sort') === 'descending' ? 'descending' : 'ascending';
+
+    // 2. LEER ARCHIVOS
     const xmlRaw = await fs.readFile(xmlPath, 'utf-8');
     const xslRaw = await fs.readFile(xslPath, 'utf-8');
 
@@ -20,92 +33,204 @@ try {
     const xmlParsed = xmlParser.xmlParse(xmlRaw);
     const xslParsed = xmlParser.xmlParse(xslRaw);
     
-    // CAMBIO AQUÍ: Cambiamos .process por .xsltProcess
+    // 3. FORMATO DE PARÁMETROS ALTERNATIVO (Array de objetos)
+    // Probamos este formato que es el que exige la v5 para que el XSLT los reciba
+    const parametros = [
+        { name: 'busqueda', value: String(search) },
+        { name: 'catsSeleccionadas', value: String(catsString) },
+        { name: 'minPrecio', value: String(minP) },
+        { name: 'maxPrecio', value: String(maxP) },
+        { name: 'orden', value: String(order) }
+    ];
+
+    // 4. PROCESAR
     // @ts-ignore
-    const resultadoReal = await xslt.xsltProcess(xmlParsed, xslParsed);
+    const resultadoReal = await xslt.xsltProcess(xmlParsed, xslParsed, parametros);
     
     if (resultadoReal && resultadoReal.length > 0) {
         htmlResultado = resultadoReal;
     } else {
-        htmlResultado = "<h1 style='color:orange;'>El XSLT devolvió un texto vacío. Revisa el match='//libro' en tu XSL.</h1>";
+        htmlResultado = "<h1 style='color:orange;'>No se han encontrado libros con esos filtros.</h1>";
     }
 
 } catch (error) {
     console.error("Error detallado:", error);
-    htmlResultado = `<p style="color:red;">Error: ${error.message}</p>`;
+    const msg = error instanceof Error ? error.message : "Error desconocido";
+    htmlResultado = `<p style="color:red;">Error: ${msg}</p>`;
 }
 ---
 
 <MainLayout title="La Caverna - Inicio">
+    <Nav_Bar />
+
+    <Filtre />
     <section class="coleccion-libros" set:html={htmlResultado} />
 </MainLayout>
+
 <style is:global>
+
     /* El contenedor que envuelve todas las cards */
+
     .coleccion-libros {
+
         display: flex;
+
         flex-wrap: wrap;
+
         gap: 50px;
-        padding: 3rem 5vw;
+
+        padding: 0;
+
+        margin-top: 200px;
+
         justify-content: center;
+
         align-items: center;
+
         text-align: center;
+
         margin-left: auto;
+
         margin-right: auto;
-        background-color: var(--crema-claro);
+
+        background-color: var(--crema);
+
         min-height: 100vh;
+
         max-width: 80vw;
+
     }
+
+
 
     /* Cada tarjeta de libro */
+
     .card {
+
         background-color: var(--blanco);
+
         border: 5px solid var(--marron-suave);
-        border-color: black;
+
         border-radius: 12px;
+
         padding: 1.5rem;
+
         display: flex;
+
         flex-direction: column;
+
         transition: all 0.3s ease;
+
         box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+
         width: 250px;
+
         height: 400px;
+
     }
+
+
 
     .card:hover {
+
         transform: translateY(-8px);
+
         box-shadow: 0 12px 25px rgba(139, 94, 60, 0.15);
+
         border-color: var(--marron-caverna);
+
     }
+
+
 
     /* Ajuste de la imagen */
+
     .card img {
+
         align-self: center;
+
        
+
         height: 200px;
+
         object-fit: cover;
+
         border-radius: 6px;
+
         background-color: #eee; /* Por si la API de portadas falla */
+
         margin-bottom: 1rem;
+
     }
+
+
 
     /* El botón del carrito */
+
     .add-to-cart {
+
         margin-top: auto;
+
         background-color: var(--marron-caverna);
+
         color: var(--blanco);
+
         border: none;
+
         padding: 0.8rem;
+
         border-radius: 6px;
+
         cursor: pointer;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         gap: 0.5rem;
+
         font-weight: 600;
+
         transition: background 0.2s;
+
     }
 
+
+
     .add-to-cart:hover {
+
         background-color: var(--texto);
+
     }
+
+    @media (max-width: 1024px) {
+
+        .coleccion-libros {
+
+        padding: 10px;
+
+        gap: 20px;;
+
+    }
+
+    .card{
+
+        zoom: 0.7;
+
+    }
+
+    }
+
+    @media (max-width: 768px) {
+
+    .card{
+
+        zoom: 0.6;
+
+    }
+
+    }
+
 </style>
