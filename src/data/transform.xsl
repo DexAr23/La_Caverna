@@ -39,53 +39,35 @@
             <xsl:when test="$orden = 'descending'">
                 <xsl:for-each select="$librosFiltrados">
                     <xsl:sort select="number(precio)" data-type="number" order="descending" />
-
-                    <article class="card" data-category="{@categoria}">
-                        <figure>
-                            <a class="card-link" href="/libro/{ISBN}">
-                                <img
-                                    src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
-                                    alt="{titulo}"
-                                    loading="lazy"
-                                    onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
-                                />
-                                <figcaption>
-                                    <h3><xsl:value-of select="titulo" /></h3>
-                                    <p class="author"><xsl:value-of select="autor" /></p>
-                                </figcaption>
-                            </a>
-                        </figure>
-                        <button class="add-to-cart" data-id="{ISBN}" data-precio="{precio}">
-                            <xsl:value-of select="precio" />€
-                        </button>
-                    </article>
+                    <xsl:call-template name="render-card" />
                 </xsl:for-each>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:for-each select="$librosFiltrados">
                     <xsl:sort select="number(precio)" data-type="number" order="ascending" />
-
-                    <article class="card" data-category="{@categoria}">
-                        <figure>
-                            <a class="card-link" href="/libro/{ISBN}">
-                                <img
-                                    src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
-                                    alt="{titulo}"
-                                    loading="lazy"
-                                    onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
-                                />
-                                <figcaption>
-                                    <h3><xsl:value-of select="titulo" /></h3>
-                                    <p class="author"><xsl:value-of select="autor" /></p>
-                                </figcaption>
-                            </a>
-                        </figure>
-                        <button class="add-to-cart" data-id="{ISBN}" data-precio="{precio}">
-                            <xsl:value-of select="precio" />€
-                        </button>
-                    </article>
+                    <xsl:call-template name="render-card" />
                 </xsl:for-each>
             </xsl:otherwise>
         </xsl:choose>
+    </xsl:template>
+
+    <xsl:template name="render-card">
+        <article class="card" data-category="{@categoria}">
+            <a class="card-link" href="/libro/{ISBN}">
+                <img
+                    src="https://covers.openlibrary.org/b/isbn/{ISBN}-M.jpg"
+                    alt="{titulo}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://placehold.co/300x450/f5f5dc/8b5e3c?text=Sin+Portada';"
+                />
+                <div class="card-copy">
+                    <h3><xsl:value-of select="titulo" /></h3>
+                    <p class="author"><xsl:value-of select="autor" /></p>
+                </div>
+            </a>
+            <button class="add-to-cart" data-id="{ISBN}" data-precio="{precio}">
+                <xsl:value-of select="precio" />€
+            </button>
+        </article>
     </xsl:template>
 </xsl:stylesheet>
