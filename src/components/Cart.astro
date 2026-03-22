@@ -191,30 +191,17 @@ const storageKey = 'la-caverna-cart';
                                     <h3>${escapeHtml(item.title)}</h3>
                                     <p>${escapeHtml(item.author)}</p>
                                 </div>
-                                <strong class="cart-item-price">${formatPrice(item.price)}</strong>
-                                <button
-                                    class="cart-remove"
-                                    type="button"
-                                    data-cart-remove="${item.cartLineId}"
-                                    aria-label="Eliminar ${escapeHtml(item.title)} del carrito"
-                                >
-                                    <svg
-                                        viewBox="0 0 24 24"
-                                        aria-hidden="true"
-                                        focusable="false"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="1.8"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
+                                <div class="cart-item-actions">
+                                    <strong class="cart-item-price">${formatPrice(item.price)}</strong>
+                                    <button
+                                        class="cart-remove"
+                                        type="button"
+                                        data-cart-remove="${item.cartLineId}"
+                                        aria-label="Eliminar ${escapeHtml(item.title)} del carrito"
                                     >
-                                        <path d="M3 6h18" />
-                                        <path d="M8 6V4h8v2" />
-                                        <path d="M19 6l-1 14H6L5 6" />
-                                        <path d="M10 11v6" />
-                                        <path d="M14 11v6" />
-                                    </svg>
-                                </button>
+                                        Eliminar
+                                    </button>
+                                </div>
                             </article>
                         `
                     )
@@ -312,7 +299,7 @@ const storageKey = 'la-caverna-cart';
     })();
 </script>
 
-<style>
+<style is:global>
     .cart-backdrop {
         position: fixed;
         inset: 0;
@@ -445,7 +432,7 @@ const storageKey = 'la-caverna-cart';
         padding: 0.55rem 0.65rem;
     }
 
-    img .cart-item-cover{
+    .cart-item-cover {
         width: 35px;
         height: 52px;
         object-fit: cover;
@@ -475,34 +462,45 @@ const storageKey = 'la-caverna-cart';
         line-height: 1.1;
     }
 
+    .cart-item-actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 12px;
+        margin-left: auto;
+        flex-shrink: 0;
+        text-align: right;
+    }
+
     .cart-item-price {
         color: var(--marron-suave);
         font-size: 0.82rem;
         white-space: nowrap;
-        flex-shrink: 0;
     }
 
     .cart-remove {
-        border: none;
         background: none;
-        color: rgba(253, 250, 245, 0.48);
+        border: none;
+        padding: 0;
+        color: var(--text-muted);
+        opacity: 0.78;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 0.2rem;
-        flex-shrink: 0;
-        transition: color 0.2s ease;
-    }
-
-    .cart-remove svg {
-        width: 18px;
-        height: 18px;
-        display: block;
+        font-family: var(--font-body);
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        line-height: 1;
+        transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
     }
 
     .cart-remove:hover {
-        color: red;
+        color: #ff4444;
+        opacity: 1;
+        transform: translateY(-1px);
     }
 
     .cart-summary-row {
