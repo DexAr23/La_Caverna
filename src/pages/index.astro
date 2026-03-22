@@ -2,6 +2,7 @@
 export const prerender = false;
 import MainLayout from '../layouts/MainLayout.astro';
 import Nav_Bar from '../components/Nav-Bar.astro';
+import Cart from '../components/Cart.astro';
 import Filtre from '../components/Filtre.astro';
 import * as xsltProcessor from 'xslt-processor';
 import fs from 'node:fs/promises';
@@ -27,7 +28,7 @@ try {
     const xmlRaw = await fs.readFile(xmlPath, 'utf-8');
     const xslRaw = await fs.readFile(xslPath, 'utf-8');
 
-    const xslt = new xsltProcessor.Xslt();
+    let xslt = new xsltProcessor.Xslt();
     const xmlParser = new xsltProcessor.XmlParser();
 
     const xmlParsed = xmlParser.xmlParse(xmlRaw);
@@ -36,16 +37,17 @@ try {
     // 3. FORMATO DE PARÁMETROS ALTERNATIVO (Array de objetos)
     // Probamos este formato que es el que exige la v5 para que el XSLT los reciba
     const parametros = [
-        { name: 'busqueda', value: String(search) },
-        { name: 'catsSeleccionadas', value: String(catsString) },
-        { name: 'minPrecio', value: String(minP) },
-        { name: 'maxPrecio', value: String(maxP) },
-        { name: 'orden', value: String(order) }
+        { name: 'busqueda', value: search },
+        { name: 'catsSeleccionadas', value: catsString },
+        { name: 'minPrecio', value: Number(minP) },
+        { name: 'maxPrecio', value: Number(maxP) },
+        { name: 'orden', value: order }
     ];
 
+    xslt = new xsltProcessor.Xslt({ parameters: parametros });
+
     // 4. PROCESAR
-    // @ts-ignore
-    const resultadoReal = await xslt.xsltProcess(xmlParsed, xslParsed, parametros);
+    const resultadoReal = await xslt.xsltProcess(xmlParsed, xslParsed);
     
     if (resultadoReal && resultadoReal.length > 0) {
         htmlResultado = resultadoReal;
@@ -62,6 +64,7 @@ try {
 
 <MainLayout title="La Caverna - Inicio">
     <Nav_Bar />
+    <Cart />
 
     <Filtre />
     <section class="coleccion-libros" set:html={htmlResultado} />

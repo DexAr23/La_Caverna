@@ -157,4 +157,429 @@
     <tapa tipo="dura" />
     <precio>22.90</precio>
   </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780316387316</ISBN>
+    <titulo>The Blade Itself</titulo>
+    <autor>Joe Abercrombie</autor>
+    <paginas>536</paginas>
+    <editorial>Orbit</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.99</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780553573398</ISBN>
+    <titulo>Assassin's Apprentice</titulo>
+    <autor>Robin Hobb</autor>
+    <paginas>448</paginas>
+    <editorial>Spectra</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.50</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780553588941</ISBN>
+    <titulo>The Lies of Locke Lamora</titulo>
+    <autor>Scott Lynch</autor>
+    <paginas>752</paginas>
+    <editorial>Bantam</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.00</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780812511819</ISBN>
+    <titulo>The Eye of the World</titulo>
+    <autor>Robert Jordan</autor>
+    <paginas>816</paginas>
+    <editorial>Tor Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>22.50</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780316229296</ISBN>
+    <titulo>The Fifth Season</titulo>
+    <autor>N.K. Jemisin</autor>
+    <paginas>512</paginas>
+    <editorial>Orbit</editorial>
+    <tapa tipo="blanda" />
+    <precio>17.99</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780060853983</ISBN>
+    <titulo>Good Omens</titulo>
+    <autor>Terry Pratchett</autor>
+    <paginas>432</paginas>
+    <editorial>William Morrow</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.99</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780765356154</ISBN>
+    <titulo>Jonathan Strange &amp; Mr Norrell</titulo>
+    <autor>Susanna Clarke</autor>
+    <paginas>1008</paginas>
+    <editorial>Tor Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>20.00</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9781635570298</ISBN>
+    <titulo>The Priory of the Orange Tree</titulo>
+    <autor>Samantha Shannon</autor>
+    <paginas>848</paginas>
+    <editorial>Bloomsbury</editorial>
+    <tapa tipo="dura" />
+    <precio>28.50</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780062662569</ISBN>
+    <titulo>The Poppy War</titulo>
+    <autor>R.F. Kuang</autor>
+    <paginas>544</paginas>
+    <editorial>Harper Voyager</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.99</precio>
+  </libro>
+  <libro categoria="Fantasia">
+    <ISBN>9780765320308</ISBN>
+    <titulo>Warbreaker</titulo>
+    <autor>Brandon Sanderson</autor>
+    <paginas>688</paginas>
+    <editorial>Tor Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>21.99</precio>
+  </libro>
+
+  <libro categoria="Filosofia">
+    <ISBN>9780140449235</ISBN>
+    <titulo>Beyond Good and Evil</titulo>
+    <autor>Friedrich Nietzsche</autor>
+    <paginas>240</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140442014</ISBN>
+    <titulo>The Social Contract</titulo>
+    <autor>Jean-Jacques Rousseau</autor>
+    <paginas>192</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.50</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140449495</ISBN>
+    <titulo>Nicomachean Ethics</titulo>
+    <autor>Aristotle</autor>
+    <paginas>384</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.95</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140431957</ISBN>
+    <titulo>Leviathan</titulo>
+    <autor>Thomas Hobbes</autor>
+    <paginas>736</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.50</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780061575594</ISBN>
+    <titulo>Being and Time</titulo>
+    <autor>Martin Heidegger</autor>
+    <paginas>589</paginas>
+    <editorial>Harper Perennial</editorial>
+    <tapa tipo="blanda" />
+    <precio>24.99</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140444490</ISBN>
+    <titulo>Fear and Trembling</titulo>
+    <autor>Søren Kierkegaard</autor>
+    <paginas>160</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>13.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140442069</ISBN>
+    <titulo>Discourse on Method</titulo>
+    <autor>René Descartes</autor>
+    <paginas>128</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>11.00</precio>
+  </libro>
+  <libro categoria="Filosofia">
+    <ISBN>9780140441314</ISBN>
+    <titulo>Tao Te Ching</titulo>
+    <autor>Laozi</autor>
+    <paginas>160</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780143039983</ISBN>
+    <titulo>The Haunting of Hill House</titulo>
+    <autor>Shirley Jackson</autor>
+    <paginas>208</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.00</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9781501156700</ISBN>
+    <titulo>Pet Sematary</titulo>
+    <autor>Stephen King</autor>
+    <paginas>416</paginas>
+    <editorial>Gallery Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.99</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780312924584</ISBN>
+    <titulo>The Silence of the Lambs</titulo>
+    <autor>Thomas Harris</autor>
+    <paginas>367</paginas>
+    <editorial>St. Martin's Press</editorial>
+    <tapa tipo="blanda" />
+    <precio>11.99</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780062259653</ISBN>
+    <titulo>Bird Box</titulo>
+    <autor>Josh Malerman</autor>
+    <paginas>272</paginas>
+    <editorial>Ecco</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.50</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780316008075</ISBN>
+    <titulo>The Terror</titulo>
+    <autor>Dan Simmons</autor>
+    <paginas>784</paginas>
+    <editorial>Back Bay Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>19.00</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780375703768</ISBN>
+    <titulo>House of Leaves</titulo>
+    <autor>Mark Z. Danielewski</autor>
+    <paginas>709</paginas>
+    <editorial>Pantheon</editorial>
+    <tapa tipo="blanda" />
+    <precio>22.00</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9781605981109</ISBN>
+    <titulo>Rosemary's Baby</titulo>
+    <autor>Ira Levin</autor>
+    <paginas>308</paginas>
+    <editorial>Pegasus Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.95</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780380729401</ISBN>
+    <titulo>Something Wicked This Way Comes</titulo>
+    <autor>Ray Bradbury</autor>
+    <paginas>304</paginas>
+    <editorial>William Morrow</editorial>
+    <tapa tipo="blanda" />
+    <precio>13.50</precio>
+  </libro>
+  <libro categoria="Terror">
+    <ISBN>9780061452888</ISBN>
+    <titulo>The Hellbound Heart</titulo>
+    <autor>Clive Barker</autor>
+    <paginas>176</paginas>
+    <editorial>Harper Paperbacks</editorial>
+    <tapa tipo="blanda" />
+    <precio>11.99</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780441478125</ISBN>
+    <titulo>The Left Hand of Darkness</titulo>
+    <autor>Ursula K. Le Guin</autor>
+    <paginas>304</paginas>
+    <editorial>Ace Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.99</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780553380958</ISBN>
+    <titulo>Snow Crash</titulo>
+    <autor>Neal Stephenson</autor>
+    <paginas>480</paginas>
+    <editorial>Spectra</editorial>
+    <tapa tipo="blanda" />
+    <precio>17.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780553283686</ISBN>
+    <titulo>Hyperion</titulo>
+    <autor>Dan Simmons</autor>
+    <paginas>482</paginas>
+    <editorial>Spectra</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.99</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780812550702</ISBN>
+    <titulo>Ender's Game</titulo>
+    <autor>Orson Scott Card</autor>
+    <paginas>324</paginas>
+    <editorial>Tor Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.50</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780553418026</ISBN>
+    <titulo>The Martian</titulo>
+    <autor>Andy Weir</autor>
+    <paginas>384</paginas>
+    <editorial>Broadway Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780060850524</ISBN>
+    <titulo>Brave New World</titulo>
+    <autor>Aldous Huxley</autor>
+    <paginas>288</paginas>
+    <editorial>Harper Perennial</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.95</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780345391803</ISBN>
+    <titulo>The Hitchhiker's Guide to the Galaxy</titulo>
+    <autor>Douglas Adams</autor>
+    <paginas>224</paginas>
+    <editorial>Del Rey</editorial>
+    <tapa tipo="blanda" />
+    <precio>12.00</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780385333849</ISBN>
+    <titulo>Slaughterhouse-Five</titulo>
+    <autor>Kurt Vonnegut</autor>
+    <paginas>224</paginas>
+    <editorial>Dial Press</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.50</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780553294385</ISBN>
+    <titulo>I, Robot</titulo>
+    <autor>Isaac Asimov</autor>
+    <paginas>256</paginas>
+    <editorial>Spectra</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.99</precio>
+  </libro>
+  <libro categoria="Ciencia Ficcion">
+    <ISBN>9780316129084</ISBN>
+    <titulo>Leviathan Wakes</titulo>
+    <autor>James S.A. Corey</autor>
+    <paginas>592</paginas>
+    <editorial>Orbit</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.99</precio>
+  </libro>
+
+  <libro categoria="Misterio">
+    <ISBN>9780307949486</ISBN>
+    <titulo>The Girl with the Dragon Tattoo</titulo>
+    <autor>Stieg Larsson</autor>
+    <paginas>672</paginas>
+    <editorial>Vintage</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.95</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9781594634024</ISBN>
+    <titulo>The Girl on the Train</titulo>
+    <autor>Paula Hawkins</autor>
+    <paginas>336</paginas>
+    <editorial>Riverhead Books</editorial>
+    <tapa tipo="dura" />
+    <precio>24.50</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780062073501</ISBN>
+    <titulo>Murder on the Orient Express</titulo>
+    <autor>Agatha Christie</autor>
+    <paginas>274</paginas>
+    <editorial>William Morrow</editorial>
+    <tapa tipo="blanda" />
+    <precio>13.99</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780140437867</ISBN>
+    <titulo>The Hound of the Baskervilles</titulo>
+    <autor>Arthur Conan Doyle</autor>
+    <paginas>256</paginas>
+    <editorial>Penguin Classics</editorial>
+    <tapa tipo="blanda" />
+    <precio>10.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780679745587</ISBN>
+    <titulo>In Cold Blood</titulo>
+    <autor>Truman Capote</autor>
+    <paginas>368</paginas>
+    <editorial>Vintage</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780394758282</ISBN>
+    <titulo>The Big Sleep</titulo>
+    <autor>Raymond Chandler</autor>
+    <paginas>231</paginas>
+    <editorial>Vintage Crime</editorial>
+    <tapa tipo="blanda" />
+    <precio>14.50</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9781250301697</ISBN>
+    <titulo>The Silent Patient</titulo>
+    <autor>Alex Michaelides</autor>
+    <paginas>336</paginas>
+    <editorial>Celadon Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>17.99</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780425274866</ISBN>
+    <titulo>Big Little Lies</titulo>
+    <autor>Liane Moriarty</autor>
+    <paginas>496</paginas>
+    <editorial>Berkley</editorial>
+    <tapa tipo="blanda" />
+    <precio>16.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780307341556</ISBN>
+    <titulo>Sharp Objects</titulo>
+    <autor>Gillian Flynn</autor>
+    <paginas>254</paginas>
+    <editorial>Crown</editorial>
+    <tapa tipo="blanda" />
+    <precio>15.00</precio>
+  </libro>
+  <libro categoria="Misterio">
+    <ISBN>9780316206846</ISBN>
+    <titulo>The Cuckoo's Calling</titulo>
+    <autor>Robert Galbraith</autor>
+    <paginas>464</paginas>
+    <editorial>Mulholland Books</editorial>
+    <tapa tipo="blanda" />
+    <precio>18.00</precio>
+  </libro>
 </libreria>

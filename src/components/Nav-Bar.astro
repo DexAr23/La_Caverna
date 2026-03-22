@@ -1,6 +1,6 @@
 ---
 // src/components/Nav-Bar.astro
-import CartIcon from './Cart.astro'; // Tu componente del SVG del carrito
+import CartIcon from './CartIcon.astro';
 
 const { pathname } = Astro.url;
 // Comprobamos si estamos en la raíz o en index.html
@@ -34,6 +34,7 @@ const isHome = pathname === '/' || pathname === '/index.html';
     <div class="nav-section right">
         <button id="btn-cart" class="btn-nav">
             <CartIcon />
+            <span class="cart-count" data-cart-count hidden>0</span>
         </button>
     </div>
 </nav>
@@ -102,12 +103,31 @@ const isHome = pathname === '/' || pathname === '/index.html';
         cursor: pointer;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
         transition-duration: 50ms;
+        position: relative;
     }
     .btn-nav:hover, .logo:hover {
         color: var(--marron-suave);
         transform: scale(1.3);
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        min-width: 20px;
+        height: 20px;
+        padding: 0 0.35rem;
+        border-radius: 999px;
+        background-color: var(--marron-caverna);
+        color: var(--blanco);
+        font-size: 0.72rem;
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+        line-height: 1;
     }
     @media (max-width: 768px) {
         .navbar{
