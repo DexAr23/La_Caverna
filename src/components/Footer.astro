@@ -1,0 +1,71 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+    <div class="footer-section footer-copy">
+        <p>&copy; {currentYear} La Caverna. Todos los derechos reservados.</p>
+    </div>
+
+    <div class="footer-section footer-links">
+        <a href="https://www.linkedin.com/in/brian-macias-sergeeva/" target="_blank" rel="noreferrer">
+            LinkedIn
+        </a>
+        <a href="https://github.com/DexAr23" target="_blank" rel="noreferrer">
+            GitHub
+        </a>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        width: min(90%, 1240px);
+        margin: 3rem auto 2rem;
+        padding: 1rem 1.5rem;
+        border: 4px solid var(--accent-color);
+        border-radius: 22px;
+        background: linear-gradient(180deg, var(--bg-panel-soft) 0%, var(--bg-panel) 100%);
+        box-shadow: var(--panel-shadow);
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .footer-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .footer-copy p {
+        color: var(--text-muted);
+        font-size: 0.92rem;
+    }
+
+    .footer-links a {
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--marron-suave);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+        .site-footer {
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .footer-section {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+</style>
